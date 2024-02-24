@@ -516,10 +516,7 @@ export const links = [
   {
     title: "Pages",
     links: [
-      {
-        name: "Transactions",
-        icon: <AiOutlineShoppingCart />,
-      },
+      
      
       
     ],

@@ -47,7 +47,7 @@ const Home = () => (
     </div>
     <div className="container items-center justify-center h-full flex gap-2 ">
       <div className=" w-[500px] h-[1000px] ">
-        <h1 className="text-6xl mt-[400px] mx-2  px-6   font-bold rounded-full  shadow-lg capitalize">
+        <h1 className="text-6xl mt-[400px] mx-2  px-6   font-bold rounded-lg  shadow-lg capitalize">
           Welcome to ElectroLite
         </h1>
         <p className="py-[20px] px-2 font-semibold">
