@@ -8,16 +8,16 @@
 
 # Index
 
-- [Waste-to-Energy Platform](#waste-to-energy-platform)
+- [🌱 Waste-to-Energy Platform 🌞](#-waste-to-energy-platform-)
 - [Index](#index)
 - [🚀 Introduction](#-introduction)
   - [Techstack](#techstack)
-- [Features](#features)
+  - [Features](#features)
 - [How to setup](#how-to-setup)
   - [Clone the repo](#clone-the-repo)
   - [Install dependencies](#install-dependencies)
 - [Finally run the webapp](#finally-run-the-webapp)
-- [License](#license)
+- [📝 License](#-license)
 
 # 🚀 Introduction
 
