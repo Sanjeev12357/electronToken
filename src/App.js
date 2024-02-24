@@ -10,6 +10,7 @@ import "./App.css";
 import { useStateContext } from "./contexts/ContextProvider";
 import Home from "./pages/Main/Home";
 import ContactForm from "./pages/Main/Contact";
+import Flow from "./pages/Main/Flow";
 
 const App = () => {
   const {
@@ -79,6 +80,7 @@ const App = () => {
                 <Route path="/Users" element={<Employees />} />
                 <Route path="/Home" element={<Home/>} />
                 <Route path="/contact" element={<ContactForm/>}/>
+                <Route path="/Flow" element={<Flow/>}/>
                 
               </Routes>
             </div>

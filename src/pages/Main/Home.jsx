@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import img1 from "../../assets/img1.jpg";
 import bitcoin from "../../assets/bitcoin.jpg";
 import women from "../../assets/women.jpg";
+import wallet from "../../assets/wallet.jpg"
+import metic from "../../assets/metic.jpg";
 
 const Home = () => (
-  <div>
+  <div className="w-[1024px] mx-auto">
     <div className="flex justify-between items-center  mx-4">
       <div className="flex px-1 items-center rounded-md shadow-md justify-center">
         <h1 className="font-semibold  text-xl">Electro</h1>
@@ -17,7 +19,7 @@ const Home = () => (
         <div className="">
           <ul className="flex text-xl font-semibold gap-2  justify-center items-center py-2 list-none">
             <li className="px-4 rounded-md shadow-lg">
-              <Link to="/">Home</Link>
+              <Link to="/Home">Home</Link>
             </li>
             <li className="px-4 rounded-md shadow-lg">
               <Link to="/profile">Profile</Link>
@@ -33,8 +35,13 @@ const Home = () => (
       </div>
 
       <div>
-        <button className="rounded-md shadow-lg text-xl font-semibold">
-          Connect Wallet
+        <button className="rounded-md shadow-lg mr-[20px]   text-xl font-semibold">
+          
+          <img
+          className="w-[30px] rounded-full shadow-xl hover:translate-y-[-5px] h-[30px]"
+          src={wallet} 
+          alt="wallet"
+          />
         </button>
       </div>
     </div>
@@ -61,7 +68,7 @@ const Home = () => (
         </div>
       </div>
 
-      <div className="w-[300px] ml-[30px] flex  h-[1000px]">
+      <div className="w-[350px]  flex  h-[1000px]">
         <div className=" flex flex-col justify-center items-center  h-[1000px] w-[200px]">
           <div className="w-[150px] flex items-center justify-center   rounded-full h-[150px] border-black border-1">
             <img src={img1} className="w-[100px] h-[100px]" alt="img1" />
@@ -69,7 +76,7 @@ const Home = () => (
           <div className="h-[500px] w-[150px] border-black border-1 rounded-full">
             <div className="rounded-full flex items-center justify-center border-black border-1 w-[150px] h-[150px]">
               <img
-                src={bitcoin}
+                src={metic}
                 className="w-[100px] h-[100px]"
                 alt="bitcoin"
               />

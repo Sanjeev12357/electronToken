@@ -31,6 +31,7 @@ import product4 from "./product4.jpg";
 import product5 from "./product5.jpg";
 import product6 from "./product6.jpg";
 import product7 from "./product7.jpg";
+import Flow from "../pages/Main/Flow";
 
 export const gridOrderImage = (props) => (
   <div>
@@ -505,6 +506,10 @@ export const links = [
         name: "Profile",
         icon: <FiShoppingBag />,
       },
+      {
+        name:"Flow",
+        icon:<FiStar/>,
+      }
     ],
   },
 
@@ -515,10 +520,7 @@ export const links = [
         name: "Transactions",
         icon: <AiOutlineShoppingCart />,
       },
-      {
-        name: "Users",
-        icon: <IoMdContacts />,
-      },
+     
       
     ],
   },
