@@ -1,4 +1,4 @@
-<h1 align="center">🌱 Waste-to-Energy Platform 🌞</h1>
+# <h1 align="center">🌱 Waste-to-Energy Platform 🌞</h1>
 
 <p align="center">
   <img src="https://www.clearias.com/up/waste-to-energy.png" alt="Waste-to-Energy Platform" width="300">
@@ -10,7 +10,7 @@
 
 - [Waste-to-Energy Platform](#waste-to-energy-platform)
 - [Index](#index)
-- [Introduction](#introduction)
+- [🚀 Introduction](#-introduction)
   - [Techstack](#techstack)
 - [Features](#features)
 - [How to setup](#how-to-setup)
