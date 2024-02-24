@@ -8,6 +8,8 @@ import { Ecommerce, Orders, Employees, Customers } from "./pages";
 import "./App.css";
 
 import { useStateContext } from "./contexts/ContextProvider";
+import Home from "./pages/Main/Home";
+import ContactForm from "./pages/Main/Contact";
 
 const App = () => {
   const {
@@ -75,6 +77,8 @@ const App = () => {
                 {/* pages  */}
                 <Route path="/Transactions" element={<Orders />} />
                 <Route path="/Users" element={<Employees />} />
+                <Route path="/Home" element={<Home/>} />
+                <Route path="/contact" element={<ContactForm/>}/>
                 
               </Routes>
             </div>
