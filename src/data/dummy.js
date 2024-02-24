@@ -12,6 +12,7 @@ import {
   BsCurrencyDollar,
   BsShield,
   BsChatLeft,
+  BsCurrencyRupee,
 } from "react-icons/bs";
 import { IoMdContacts } from "react-icons/io";
 import { RiContactsLine } from "react-icons/ri";
@@ -574,9 +575,9 @@ export const chatData = [
 export const earningData = [
   {
     icon: <BsBoxSeam />,
-    amount: "4,396",
+    amount: "96",
     percentage: "+23%",
-    title: "Total Waste",
+    title: "Total Waste in Kg",
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
     pcColor: "green-600",
@@ -585,7 +586,7 @@ export const earningData = [
     icon: <FiBarChart />,
     amount: "423,39",
     percentage: "+38%",
-    title: "Energy Used",
+    title: "Energy Used in Unit",
     iconColor: "rgb(228, 106, 118)",
     iconBg: "rgb(255, 244, 229)",
 
@@ -593,7 +594,7 @@ export const earningData = [
   },
   {
     icon: <HiOutlineRefresh />,
-    amount: "39,354",
+    amount: "2000",
     percentage: "-12%",
     title: "Coins Redemed",
     iconColor: "rgb(0, 194, 146)",
@@ -604,9 +605,9 @@ export const earningData = [
 
 export const recentTransactions = [
   {
-    icon: <BsCurrencyDollar />,
+    icon: <BsCurrencyRupee />,
     amount: "+₹350",
-    title: "Paypal Transfer",
+    title: " Electricity bill",
     desc: "Money Added",
     iconColor: "#03C9D7",
     iconBg: "#E5FAFB",
@@ -615,7 +616,7 @@ export const recentTransactions = [
   {
     icon: <BsShield />,
     amount: "-₹560",
-    desc: "Bill Payment",
+    desc: "Water Bill",
     title: "Wallet",
     iconColor: "rgb(0, 194, 146)",
     iconBg: "rgb(235, 250, 242)",
@@ -624,7 +625,7 @@ export const recentTransactions = [
   {
     icon: <FiCreditCard />,
     amount: "+₹350",
-    title: "Credit Card",
+    title: "House Tax",
     desc: "Money reversed",
     iconColor: "rgb(255, 244, 229)",
     iconBg: "rgb(254, 201, 15)",
@@ -633,8 +634,8 @@ export const recentTransactions = [
   },
   {
     icon: <TiTick />,
-    amount: "+₹350",
-    title: "Bank Transfer",
+    amount: "+₹630",
+    title: "Electricity",
     desc: "Money Added",
 
     iconColor: "rgb(228, 106, 118)",
@@ -642,7 +643,7 @@ export const recentTransactions = [
     pcColor: "green-600",
   },
   {
-    icon: <BsCurrencyDollar />,
+    icon: <BsCurrencyRupee />,
     amount: "-₹50",
     percentage: "+38%",
     title: "Refund",

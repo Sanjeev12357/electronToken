@@ -10,6 +10,8 @@ import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropd
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
 import { Link } from 'react-router-dom';
+import Chatbot from './Main/ChatBot';
+
 
 const DropDown = ({ currentMode }) => (
   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
@@ -58,8 +60,8 @@ const Ecommerce = () => {
           <div className="bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg h-[200px] rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
             <div className="flex justify-between items-center">
               <div>
-                <p className="font-bold text-gray-400">Earnings</p>
-                <p className="text-2xl">₹63,448.78</p>
+                <p className="font-bold text-gray-400">Coins</p>
+                <p className="text-2xl">3,448.78</p>
               </div>
               <button
                 type="button"
@@ -150,7 +152,7 @@ const Ecommerce = () => {
 
                 <div>
                   <p className="text-2xl text-white font-semibold mt-8">
-                    $63,448.78
+                    Rs3,448.78
                   </p>
                   <p className="text-gray-200">Monthly revenue</p>
                 </div>
@@ -183,40 +185,8 @@ const Ecommerce = () => {
               </button>
             </div>
 
-            <div className="mt-10 ">
-              {weeklyStats.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex justify-between mt-4 w-full"
-                >
-                  <div className="flex gap-4">
-                    <button
-                      type="button"
-                      style={{ background: item.iconBg }}
-                      className="text-2xl hover:drop-shadow-xl text-white rounded-full p-3"
-                    >
-                      {item.icon}
-                    </button>
-                    <div>
-                      <p className="text-md font-semibold">{item.title}</p>
-                      <p className="text-sm text-gray-400">{item.desc}</p>
-                    </div>
-                  </div>
-
-                  <p className={`text-${item.pcColor}`}>{item.amount}</p>
-                </div>
-              ))}
-              <div className="mt-4">
-                <SparkLine
-                  currentColor={currentColor}
-                  id="area-sparkLine"
-                  height="160px"
-                  type="Area"
-                  data={SparklineAreaData}
-                  width="320"
-                  color="rgb(242, 252, 253)"
-                />
-              </div>
+            <div>
+              <Chatbot/>
             </div>
           </div>
         </div>
