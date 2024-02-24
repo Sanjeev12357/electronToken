@@ -6,9 +6,26 @@
 
 <p align="center">Welcome to the Waste-to-Energy Platform – your gateway to sustainable waste management and renewable energy production! 💡</p>
 
-## 🚀 Introduction
+# Index
+
+- [Waste-to-Energy Platform](#waste-to-energy-platform)
+- [Index](#index)
+- [Introduction](#introduction)
+  - [Techstack](#techstack)
+- [Features](#features)
+- [How to setup](#how-to-setup)
+  - [Clone the repo](#clone-the-repo)
+  - [Install dependencies](#install-dependencies)
+- [Finally run the webapp](#finally-run-the-webapp)
+- [License](#license)
+
+# 🚀 Introduction
 
 The Waste-to-Energy Platform is a decentralized solution designed to revolutionize how we manage organic waste and harness renewable energy. By connecting households and businesses with local waste-to-energy conversion facilities, our platform incentivizes eco-friendly waste disposal while promoting the generation of clean energy. ♻️
+
+## Techstack
+
+    - ReactJS
 
 ## ✨ Features
 
@@ -17,24 +34,34 @@ The Waste-to-Energy Platform is a decentralized solution designed to revolutioni
 - **Real-Time Monitoring**: Monitor energy consumption and production in real-time, detecting anomalies and preventing electricity theft.
 - **Community Engagement**: Engage with local communities through educational resources, incentives, and collaborative initiatives.
 - **Government Collaboration**: Partner with government agencies for regulatory compliance, funding opportunities, and policy advocacy.
+- 
+# How to setup
 
-## 🛠️ Getting Started
+## Clone the repo
 
-To get started with the Waste-to-Energy Platform, follow these simple steps:
+Fork and clone the repo
 
-1. Clone the repository: `git clone https://github.com/yourusername/waste-to-energy-platform.git`
-2. Install dependencies: `npm install`
-3. Configure environment variables: Update `.env.example` with your credentials and rename it to `.env`.
-4. Run the application: `npm start`
+```bash
+git clone git@github.com:Sanjeev12357/electronToken.git
+cd electronToken
+```
 
-## 🤝 Contribution Guidelines
+## Install dependencies
 
-We welcome contributions from the community to help improve the Waste-to-Energy Platform. If you have ideas for new features, bug fixes, or enhancements, feel free to submit a pull request or open an issue.
+```bash
+npm install
+```
 
-## 📧 Contact Us
+# Finally run the webapp
 
-Have questions or feedback? Contact us at [info@wastetoenergy.com](mailto:info@wastetoenergy.com) or join our [community forum](https://yourdomain.com/forum).
+```bash
+npm start
+```
 
-## 📝 License
+The webapp will be running on `localhost:3000`
 
-This project is licensed under the [MIT License](LICENSE).
+To open the same application of another device for testing purposes, make sure that the device is connected to the same network as the device on which the webapp is running. Then visit `http://<IP_ADDRESS_OF_THE_DEVICE_RUNNING_THE_WEBAPP>:3000`
+
+# 📝 License
+
+The projects is licensed under [MIT](https://choosealicense.com/licenses/mit/)
