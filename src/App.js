@@ -1,23 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+import { Navbar, Footer, ThemeSettings } from "./components";
 import { Ecommerce, Orders, Employees, Customers } from "./pages";
 import "./App.css";
-
+import bot from "./assets/chatbot.jpg"
 import { useStateContext } from "./contexts/ContextProvider";
 import Home from "./pages/Main/Home";
 import ContactForm from "./pages/Main/Contact";
 import Flow from "./pages/Main/Flow";
+import ChatBot from "./pages/Main/ChatBot";
+import Announcment from "./pages/Announcements/Announcment";
 
 const App = () => {
   const {
     setCurrentColor,
     setCurrentMode,
     currentMode,
-    activeMenu,
     currentColor,
     themeSettings,
     setThemeSettings,
@@ -31,6 +32,8 @@ const App = () => {
       setCurrentMode(currentThemeMode);
     }
   }, []);
+
+  const [prev,setPrev]=useState(0);
 
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
@@ -48,18 +51,10 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
-          {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
+
           <div
             className={
-              activeMenu
+              false
                 ? "dark:bg-main-dark-bg  bg-main-bg min-h-screen md:ml-72 w-full  "
                 : "bg-main-bg dark:bg-main-dark-bg  w-full min-h-screen flex-2 "
             }
@@ -78,11 +73,29 @@ const App = () => {
                 {/* pages  */}
                 <Route path="/Transactions" element={<Orders />} />
                 <Route path="/Users" element={<Employees />} />
-                <Route path="/Home" element={<Home/>} />
-                <Route path="/contact" element={<ContactForm/>}/>
-                <Route path="/Flow" element={<Flow/>}/>
-                
+                <Route path="/Home" element={<Home />} />
+                <Route path="/contact" element={<ContactForm />} />
+                <Route path="/Flow" element={<Flow />} />
+                <Route path="/announcements" element={<Announcment />} />
               </Routes>
+              <div
+                onClick={() => {
+                  setPrev(!prev);
+                }}
+                className="rounded-full border-2 hover:bg-slate-400 duration-300 ease-in-out border-black flex items-center justify-center shadow-lg w-[80px] h-[80px] relative left-[100px] top-[-800px]"
+              >
+                <img
+                  src={bot}
+                  alt="bot"
+                  className="w-[60px] rounded-full h-[60px]"
+                />
+              </div>
+
+              {!prev && (
+                <div className="bg-slate-200  rounded-lg shadow-md relative left-[100px] top-[-800px] w-[400px] h-[500px] px-[5px] flex py-[10px]  overflow-y-scroll justify-center">
+                  <ChatBot />
+                </div>
+              )}
             </div>
             <Footer />
           </div>

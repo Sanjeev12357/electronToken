@@ -24,15 +24,15 @@ const Ecommerce = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center  mx-4">
-        <div className="flex px-1 items-center rounded-md shadow-md justify-center">
-          <h1 className="font-semibold  text-xl">Electro</h1>
+      <div className="flex justify-between mb-2 shadow-md  items-center  mx-4">
+        <div className="flex px-1 items-center hover:bg-slate-400 duration-300 rounded-md shadow-md justify-center">
+          <h1 className="font-semibold  text-3xl">Electro</h1>
           <img className="w-[25px] h-[25px]" src={logo} />
         </div>
 
         <div>
           <div className="">
-            <ul className="flex text-xl font-semibold gap-2  justify-center items-center py-2 list-none">
+            <ul className="flex text-3xl font-semibold gap-2  justify-center items-center py-2 list-none">
               <li className="px-4 rounded-md shadow-lg">
                 <Link to="/Home">Home</Link>
               </li>
@@ -50,8 +50,12 @@ const Ecommerce = () => {
         </div>
 
         <div>
-          <button className="rounded-md shadow-lg mr-[20px] text-xl font-semibold">
-            <img className="w-[25px] h-[25px]" src={wallet} alt="wallet" />
+          <button className="rounded-md shadow-lg mr-[20px]   text-xl font-semibold">
+            <img
+              className="w-[30px] rounded-full shadow-xl hover:translate-y-[-5px] h-[30px]"
+              src={wallet}
+              alt="wallet"
+            />
           </button>
         </div>
       </div>
@@ -175,18 +179,8 @@ const Ecommerce = () => {
 
         <div className="flex flex-wrap justify-center">
           <div className="md:w-800 shadow-lg bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
-            <div className="flex justify-between">
-              <p className="text-xl font-semibold">Weekly Stats</p>
-              <button
-                type="button"
-                className="text-xl font-semibold text-gray-500"
-              >
-                <IoIosMore />
-              </button>
-            </div>
-
             <div>
-              <Chatbot/>
+              <Chatbot />
             </div>
           </div>
         </div>

@@ -1,13 +1,38 @@
-import React from 'react'
 
-import flow from "../../assets/CPCP.png"
-import wallet from "../../assets/wallet.jpg";
-import logo from "../../assets/electro.jpg";
-import { Link } from 'react-router-dom';
 
-const Flow = () => {
+import React, { useEffect, useState } from "react";
+import { CreateTodo } from "./CreateTodo";
+import { Todos } from "./Todos";
+import wallet from "../../assets/wallet.jpg"
+
+import logo from "../../assets/electro.jpg"
+import { Link } from "react-router-dom";
+const Announcment = () => {
+  const [todos, setTodos] = useState([]);
+
+  const func1 = async () => {
+    // Corrected the placement of 'async'
+    try {
+      const res = await fetch("http://localhost:3001/todos", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      });
+      const json = await res.json();
+      console.log(json);
+      setTodos(json.todos);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+    }
+  };
+
+  useEffect(() => {
+    func1();
+  }, []); // Removed 'todos' from the dependency array to avoid an infinite loop
+
   return (
-    <>
+    <div>
       <div className="flex justify-between mb-2 shadow-md  items-center  mx-4">
         <div className="flex px-1 items-center hover:bg-slate-400 duration-300 hover:cursor-pointer rounded-md shadow-md justify-center">
           <h1 className="font-semibold  text-3xl">Electro</h1>
@@ -43,13 +68,10 @@ const Flow = () => {
           </button>
         </div>
       </div>
-      <div className="flex  items-center justify-center mt-1  ">
-        <div className="rounded-lg w-[900px] h-[700px] flex items-center justify-center shadow-2xl ">
-          <img className="w-full h-full" src={flow} alt="flowdiagram" />
-        </div>
-      </div>
-    </>
-  );
-}
 
-export default Flow;
+      <Todos todos={todos}></Todos>
+    </div>
+  );
+};
+
+export default Announcment;
