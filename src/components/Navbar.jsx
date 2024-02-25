@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -36,6 +36,9 @@ const Navbar = () => {
 
   ///////////////////////
 
+const [value,setValue]=useState(false);
+const [address,setAddress]=useState("");
+const [balance,setBalance]=useState("");
 
 
   const Wallet =async ()=>{
@@ -52,9 +55,12 @@ const Navbar = () => {
           return typeof value === "bigint" ? value.toString() : value;
         })
       );
-      console.log(_address);
-      console.log(_balance);
-      console.log(io)
+      setValue(true);
+      setAddress(_address);
+      setBalance(io);
+      // console.log(_address);
+      // console.log(_balance);
+      // console.log(io)
     }
     catch(e){
       console.log("Wallet Function At Navbar")
@@ -79,7 +85,7 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={Wallet}
           >
-           Connect Wallet
+         {value? <p>{address} ------ {balance}</p> : <p>Connect Wallet</p> }  
            
           </div>
         </TooltipComponent>
