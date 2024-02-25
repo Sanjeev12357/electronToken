@@ -238,7 +238,7 @@ useEffect(() => {
 // },[]);
 
   /////////////////////////////////////////////////////////////////////////
-const [array33,setArray33]=useState();
+const [array33,setArray33]=useState([]);
 const [result,setResult]=useState([]);
 
 
@@ -249,16 +249,18 @@ const [result,setResult]=useState([]);
           const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
           const _fetching_log_int = await contract.fetching_log_int();
           setArray33(_fetching_log_int);
-          console.log("people_deducted_amount = "+_fetching_log_int);
+          // console.log("people_deducted_amount = "+_fetching_log_int);
         }
         catch(e){
-          console.log("people_deducted_amount Function At Ecommerce")
+          console.log("fetching_log_int Function At Ecommerce")
         }
      })();
   });
 
 
-array33.map((val)=>{
+
+
+for(let i=1;array33.length;i++){
   (async(p)=>{
     try{
     
@@ -279,9 +281,35 @@ array33.map((val)=>{
       catch(e){
         console.log("people_spend Function At Ecommerce")
       }
-   })(val);
+   })(i);
+}
 
-})
+
+
+// array33.map((val)=>{
+//   (async(p)=>{
+//     try{
+    
+       
+          
+//           const provider = new ethers.BrowserProvider(window.ethereum);
+//     // await window.ethereum.request({ method: "eth_requestAccounts" });
+//     // const signer = await provider.getSigner();
+//         const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+//           const transaction = await contract.fetching_log_data(p);
+          
+//           transaction.wait();
+//           console.log("adwdkawndkaw = "+transaction);
+//           setResult([...transaction,{transaction}]);
+//           console.log(result);
+      
+//       }
+//       catch(e){
+//         console.log("people_spend Function At Ecommerce")
+//       }
+//    })(val);
+
+// })
 
   
   
