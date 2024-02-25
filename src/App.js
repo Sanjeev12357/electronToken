@@ -77,6 +77,7 @@ const App = () => {
                 <Route path="/contact" element={<ContactForm />} />
                 <Route path="/Flow" element={<Flow />} />
                 <Route path="/announcements" element={<Announcment />} />
+                
               </Routes>
               <div
                 onClick={() => {

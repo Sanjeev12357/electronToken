@@ -85,7 +85,7 @@ const [balance,setBalance]=useState("");
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={Wallet}
           >
-         {value? <p>{address} ------ {balance}</p> : <p>Connect Wallet</p> }  
+         {value? <p>{address} ------ {balance}</p> : <p className='bg-black text-white rounded-md shadow-md'>Connect Wallet</p> }  
            
           </div>
         </TooltipComponent>
