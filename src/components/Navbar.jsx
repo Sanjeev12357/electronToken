@@ -40,7 +40,7 @@ const Navbar = () => {
 
   const Wallet =async ()=>{
 
-    // try{
+    try{
       const provider = new ethers.BrowserProvider(window.ethereum);
       await window.ethereum.request({ method: "eth_requestAccounts" });
       const signer = await provider.getSigner();
@@ -55,14 +55,15 @@ const Navbar = () => {
       console.log(_address);
       console.log(_balance);
       console.log(io)
-    // }
-    // catch(e){
-    //   console.log("Wallet Function At Navbar")
-    // }
+    }
+    catch(e){
+      console.log("Wallet Function At Navbar")
+    }
   
   }
   
 // console.log(contract_address.smartContractAddress)
+
   ////////////////////////
   
 
