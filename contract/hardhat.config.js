@@ -9,14 +9,14 @@ const {INFURA_API_KEY,PRIVATE_KEY}=process.env;
 
 module.exports = {
   solidity: "0.8.20",
-  defaultNetwork:"sepolia",
-  // paths: {
-  //   artifacts: "./src",
-  // },
+  defaultNetwork:"zkEVM",
+  paths: {
+    artifacts: "../src",
+  },
   networks:{
     hardhat:{},
-    sepolia:{
-      url:`https:sepolia.infura.io/v3/${INFURA_API_KEY}`,
+    zkEVM:{
+      url:`https://rpc.public.zkevm-test.net`,
       accounts: [PRIVATE_KEY]  
     },
   }

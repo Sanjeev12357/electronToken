@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract hack is ERC20, ERC20Burnable, ERC20Permit {
+contract electro is ERC20, ERC20Burnable, ERC20Permit {
     address private owner;
 
     struct people {

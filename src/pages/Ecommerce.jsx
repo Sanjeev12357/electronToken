@@ -10,7 +10,6 @@ import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropd
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
 import { Link } from 'react-router-dom';
-import Chatbot from './Main/ChatBot';
 
 
 const DropDown = ({ currentMode }) => (
@@ -186,7 +185,7 @@ const Ecommerce = () => {
             </div>
 
             <div>
-              <Chatbot/>
+             
             </div>
           </div>
         </div>

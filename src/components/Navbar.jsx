@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 
+
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../assets/sonali.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-
+import {ethers} from "ethers";
+import electron from "../contracts/electro.sol/electro.json";
+import contract_address from "../smartContractAddress.json";
 
 
 const Navbar = () => {
@@ -30,6 +33,37 @@ const Navbar = () => {
     }
   }, [screenSize]);
 
+
+  ///////////////////////
+
+
+
+  const Wallet =async ()=>{
+
+    // try{
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      await window.ethereum.request({ method: "eth_requestAccounts" });
+      const signer = await provider.getSigner();
+      const _address = await signer.getAddress();
+      const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+      const _balance=await contract.balanceOf(_address);
+      const io=JSON.parse(
+        JSON.stringify(_balance, (key, value) => {
+          return typeof value === "bigint" ? value.toString() : value;
+        })
+      );
+      console.log(_address);
+      console.log(_balance);
+      console.log(io)
+    // }
+    // catch(e){
+    //   console.log("Wallet Function At Navbar")
+    // }
+  
+  }
+  
+// console.log(contract_address.smartContractAddress)
+  ////////////////////////
   
 
   return (
@@ -42,20 +76,10 @@ const Navbar = () => {
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick('userProfile')}
+            onClick={Wallet}
           >
-            <img
-              className="rounded-full w-8 h-8"
-              src={avatar}
-              alt="user-profile"
-            />
-            <p>
-              <span className="text-gray-400 text-14">Hi,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
-                Sonali
-              </span>
-            </p>
-            <MdKeyboardArrowDown className="text-gray-400 text-14" />
+           Connect Wallet
+           
           </div>
         </TooltipComponent>
 
