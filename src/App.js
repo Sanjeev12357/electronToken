@@ -12,7 +12,7 @@ import Home from "./pages/Main/Home";
 import ContactForm from "./pages/Main/Contact";
 import Flow from "./pages/Main/Flow";
 import ChatBot from "./pages/Main/ChatBot";
-import Announcment from "./pages/Announcements/Announcment";
+
 
 const App = () => {
   const {
@@ -76,7 +76,7 @@ const App = () => {
                 <Route path="/Home" element={<Home />} />
                 <Route path="/contact" element={<ContactForm />} />
                 <Route path="/Flow" element={<Flow />} />
-                <Route path="/announcements" element={<Announcment />} />
+               
                 
               </Routes>
               <div

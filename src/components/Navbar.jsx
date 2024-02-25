@@ -40,34 +40,34 @@ const [value,setValue]=useState(false);
 const [address,setAddress]=useState("");
 const [balance,setBalance]=useState("");
 
+const Wallet = async()=>{
 
-  const Wallet =async ()=>{
-
-    try{
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      await window.ethereum.request({ method: "eth_requestAccounts" });
-      const signer = await provider.getSigner();
-      const _address = await signer.getAddress();
-      const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
-      const _balance=await contract.balanceOf(_address);
-      const io=JSON.parse(
-        JSON.stringify(_balance, (key, value) => {
-          return typeof value === "bigint" ? value.toString() : value;
-        })
-      );
-      setValue(true);
-      setAddress(_address);
-      setBalance(io);
-      // console.log(_address);
-      // console.log(_balance);
-      // console.log(io)
-    }
-    catch(e){
-      console.log("Wallet Function At Navbar")
-    }
-  
+  try{
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const signer = await provider.getSigner();
+    const _address = await signer.getAddress();
+    const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+    const _balance=await contract.balanceOf(_address);
+    const io=JSON.parse(
+      JSON.stringify(_balance, (key, value) => {
+        return typeof value === "bigint" ? value.toString() : value;
+      })
+    );
+    setValue(true);
+    setAddress(_address);
+    setBalance(io);
+    // console.log(_address);
+    // console.log(_balance);
+    // console.log(io)
   }
-  
+  catch(e){
+    console.log("Wallet Function At Navbar")
+  }
+
+}
+
+
 // console.log(contract_address.smartContractAddress)
 
   ////////////////////////
@@ -83,9 +83,9 @@ const [balance,setBalance]=useState("");
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={Wallet}
+            onClick={()=>{Wallet()}}
           >
-         {value? <p>{address} ------ {balance}</p> : <p className='bg-black text-white rounded-md shadow-md'>Connect Wallet</p> }  
+         {value ? <p className='font-medium text-lg	'>Address: {address} <br/>Balance: {balance}</p> : <p className='w-32 text-lg bg-black text-white rounded-md shadow-md'>Connect Wallet</p> }  
            
           </div>
         </TooltipComponent>

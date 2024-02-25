@@ -13,7 +13,7 @@ const Announcment = () => {
   const func1 = async () => {
     // Corrected the placement of 'async'
     try {
-      const res = await fetch("http://localhost:3000/todos", {
+      const res = await fetch("http://localhost:3003/todos", {
         method: "GET",
         headers: {
           "Content-type": "application/json",

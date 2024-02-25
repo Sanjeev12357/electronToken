@@ -71,20 +71,20 @@ contract electro is ERC20, ERC20Burnable, ERC20Permit {
         transfer(to, value);
     }
 
-    function people_total_amount() public view returns (uint256) {
-        return People[msg.sender].total_amount;
+    function people_total_amount(address _address) public view returns (uint256) {
+        return People[_address].total_amount;
     }
 
-    function people_deducted_amount() public view returns (uint256) {
-        return People[msg.sender].amount_deducted;
+    function people_deducted_amount(address _address) public view returns (uint256) {
+        return People[_address].amount_deducted;
     }
 
-    function people_waste() public view returns (uint256) {
-        return People[msg.sender].waste;
+    function people_waste(address _address) public view returns (uint256) {
+        return People[_address].waste;
     }
 
-    function fetching_log_int() public view returns (uint256[] memory) {
-        return map_uint[msg.sender];
+    function fetching_log_int(address _address) public view returns (uint256[] memory) {
+        return map_uint[_address];
     }
 
     function fetching_log_data(uint256 _id) public view returns (Data memory) {
