@@ -13,7 +13,7 @@ const Announcment = () => {
   const func1 = async () => {
     // Corrected the placement of 'async'
     try {
-      const res = await fetch("http://localhost:3001/todos", {
+      const res = await fetch("http://localhost:3000/todos", {
         method: "GET",
         headers: {
           "Content-type": "application/json",
@@ -32,7 +32,7 @@ const Announcment = () => {
   }, []); // Removed 'todos' from the dependency array to avoid an infinite loop
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex justify-between mb-2 shadow-md  items-center  mx-4">
         <div className="flex px-1 items-center hover:bg-slate-400 duration-300 hover:cursor-pointer rounded-md shadow-md justify-center">
           <h1 className="font-semibold  text-3xl">Electro</h1>

@@ -10,12 +10,13 @@ export function Todos({ todos }) {
     <div>
       {todos.map(function (todo) {
         return (
-          <div>
-            <h1>{todo.title}</h1>
-            <h2>{todo.description}</h2>
-            <button>
-              {todo.completed == true ? "Completed" : "Mark as Complete"}
-            </button>
+          <div className="flex items-center justify-center flex-col">
+            <ul>
+              <li className="text-black text-5xl font-bold ">{todo.title}</li>
+              <li className="text-black text-3xl text-ellipsis font-semibold">{todo.description}</li>
+            </ul>
+
+            
           </div>
         );
       })}
