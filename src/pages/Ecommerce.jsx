@@ -50,26 +50,7 @@ const array=[{
   pcColor: "green-600",
 }];
 
-const array2=[
-  {
-    icon: <BsCurrencyRupee />,
-    amount: "350",
-    title: " Electricity bill",
-    desc: "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
-    iconColor: "#03C9D7",
-    iconBg: "#E5FAFB",
-    pcColor: "green-600",
-  },
-  {
-    icon: <BsCurrencyRupee />,
-    amount: "350",
-    title: " Water bill",
-    desc: "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
-    iconColor: "#03C9D7",
-    iconBg: "#E5FAFB",
-    pcColor: "green-600",
-  }
-]
+
 
 const DropDown = ({ currentMode }) => (
   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
@@ -99,7 +80,7 @@ useEffect(() => {
           })
         );
         setTotal_amount(data);
-        console.log("_people_total_amount = "+data);
+        // console.log("_people_total_amount = "+data);
       }
       catch(e){
         console.log("returnTotal_amount Function At Ecommerce")
@@ -121,7 +102,7 @@ useEffect(() => {
           })
         );
         array[0].amount=data1;
-        console.log("Waste = "+array[0].amount);
+        // console.log("Waste = "+array[0].amount);
       }
       catch(e){
         console.log("people_waste Function At Ecommerce")
@@ -140,7 +121,7 @@ useEffect(() => {
                     break;
         }
       }
-      console.log("Meter Bill ==== "+  array[1].amount);
+      // console.log("Meter Bill ==== "+  array[1].amount);
      
       }
       catch(e){
@@ -161,7 +142,7 @@ useEffect(() => {
           })
         );
         array[2].amount=data2;
-        console.log("people_deducted_amount = "+array[2].amount);
+        // console.log("people_deducted_amount = "+array[2].amount);
       }
       catch(e){
         console.log("people_deducted_amount Function At Ecommerce")
@@ -181,21 +162,79 @@ useEffect(() => {
 
 
  /////////////////////////////////////////////////////////////////////////
- useEffect(() => {
-  const people_spend=async()=>{
+ const [num1, setNum1] = useState();
+ const [num2, setNum2] = useState();
+
+ const array2=[
+  {
+    icon: <BsCurrencyRupee />,
+    amount: num1,
+    title: " Electricity bill",
+    desc: "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+    pcColor: "n1",
+    id:1,
+  },
+  {
+    icon: <BsCurrencyRupee />,
+    amount: num2,
+    title: " Water bill",
+    desc: "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+    pcColor: "n2",
+    id:2,
+  }
+]
+
+  const handleInput = (event) => {
+    const name = event.target.name;
+    console.log(event.target.value);
+    const value = event.target.value;
+    console.log(name, value);
+    if (name=="n1")
+      setNum1(value);
+    
+    if (name=="n2")
+    setNum2(value)
+    // console.log(compDetails.name);
+    // console.log(compDetails.category);
+  };
+
+
+//  useEffect(() => {
+  const people_spend=async(p)=>{
     try{
-    const provider = new ethers.BrowserProvider(window.ethereum);
+    
+        if(p==1){
+          console.log(p);
+          console.log(num1);
+          const provider = new ethers.BrowserProvider(window.ethereum);
     await window.ethereum.request({ method: "eth_requestAccounts" });
     const signer = await provider.getSigner();
         const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, signer);
-        const transaction = await contract.people_spend();
-        transaction.wait();
+          const transaction = await contract.people_spend("0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",num1);
+          transaction.wait();
+          setNum1(0);
+        }
+       
+        if(p==2){
+          const provider = new ethers.BrowserProvider(window.ethereum);
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, signer);
+          const transaction = await contract.people_spend("0x617F2E2fD72FD9D5503197092aC168c91465E7f2",num2);
+          transaction.wait();
+          setNum2(0);
+
+        }
       }
       catch(e){
         console.log("people_spend Function At Ecommerce")
       }
    }
-},[]);
+// },[]);
 
   /////////////////////////////////////////////////////////////////////////
   return (
@@ -284,7 +323,7 @@ useEffect(() => {
             </div>
             <div className="mt-10 w-72 md:w-400">
               {array2.map((item) => (
-                <div key={item.title} className="flex justify-between mt-4">
+                <div key={item.title} className="flex justify-between mt-4 gap-36">
                   <div className="flex gap-4">
                     <button
                       type="button"
@@ -302,9 +341,18 @@ useEffect(() => {
                     </div>
                   </div>
                   {/* <p className={`text-${item.pcColor}`}>{item.amount}</p> */}
-                  <div>
-                    <input placeholder='Enter' className='bg-orange-400'></input>
-                    <button>AYO</button>
+                  <div className='h-8 flex flex-row gap-4'>
+                    {/* <input placeholder='Enter' className='w-24 bg-orange-400'></input> */}
+                    <input
+                type="number"
+                autoComplete="off"
+                value={item.amount}
+                onChange={handleInput}
+                name={item.pcColor}
+                id={item.pcColor}
+                placeholder="Coin"
+                className='w-24 bg-orange-400'></input>
+                    <button onClick={()=>people_spend(item.id)}>Send</button>
                   </div>
                 </div>
               ))}
