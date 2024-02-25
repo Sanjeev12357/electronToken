@@ -11,7 +11,7 @@ async function main() {
 
   try {
     fs.writeFileSync(
-      "./smartContractAddress.json",
+      "../src/smartContractAddress.json",
       JSON.stringify({ smartContractAddress: electroContract.target })
     );
   } catch (error) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import { BsCurrencyDollar } from 'react-icons/bs';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { IoIosMore } from 'react-icons/io';
@@ -10,7 +10,47 @@ import { earningData, medicalproBranding, recentTransactions, weeklyStats, dropd
 import { useStateContext } from '../contexts/ContextProvider';
 import product9 from '../data/product9.jpg';
 import { Link } from 'react-router-dom';
-import Chatbot from './Main/ChatBot';
+import {ethers} from "ethers";
+import electron from "../contracts/electro.sol/electro.json";
+import contract_address from "../smartContractAddress.json";
+import {
+  BsBoxSeam,
+  BsCurrencyRupee
+} from "react-icons/bs";
+import {
+  
+  FiBarChart
+} from "react-icons/fi";
+import { HiOutlineRefresh } from "react-icons/hi";
+import ChatBot from './Main/ChatBot';
+
+
+const array=[{
+  icon: <BsBoxSeam />,
+  amount: "96",
+  percentage: "+23%", 
+  title: "Total Waste in Kg",
+  iconColor: "rgb(255, 244, 229)",
+  iconBg: "rgb(254, 201, 15)",
+  pcColor: "green-600",
+},{
+  icon: <FiBarChart />,
+  amount: "87",
+  percentage: "+23%",
+  title: "Meter Bill (Monthly)",
+  iconColor: "rgb(228, 106, 118)",
+  iconBg: "rgb(255, 244, 229)",
+  pcColor: "green-600",
+},{
+  icon: <HiOutlineRefresh />,
+  amount: "96",
+  percentage: "+23%",
+  title: "Total Coin Used",
+  iconColor: "rgb(0, 194, 146)",
+  iconBg: "rgb(235, 250, 242)",
+  pcColor: "green-600",
+}];
+
 
 
 const DropDown = ({ currentMode }) => (
@@ -22,6 +62,182 @@ const DropDown = ({ currentMode }) => (
 const Ecommerce = () => {
   const { currentColor, currentMode } = useStateContext();
 
+
+  /////////////////////////////////////////////////////////////////////////
+const [total_amount,setTotal_amount]=useState("");
+const [_random,setRandom]=useState(0);
+const [count,setCount]=useState(0);
+
+
+useEffect(() => {
+  const returnTotal_amount = async()=>{
+    try{
+    const provider = new ethers.BrowserProvider(window.ethereum);
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+        const _people_total_amount = await contract.people_total_amount();
+        const data=JSON.parse(
+          JSON.stringify(_people_total_amount, (key, value) => {
+            return typeof value === "bigint" ? value.toString() : value;
+          })
+        );
+        setTotal_amount(data);
+        // console.log("_people_total_amount = "+data);
+      }
+      catch(e){
+        console.log("returnTotal_amount Function At Ecommerce")
+      }
+   }
+   returnTotal_amount();
+});
+
+
+useEffect(() => {
+  (async()=>{
+    try{
+    const provider = new ethers.BrowserProvider(window.ethereum);
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+        const _people_waste = await contract.people_waste();
+        const data1=JSON.parse(
+          JSON.stringify(_people_waste, (key, value) => {
+            return typeof value === "bigint" ? value.toString() : value;
+          })
+        );
+        array[0].amount=data1;
+        // console.log("Waste = "+array[0].amount);
+      }
+      catch(e){
+        console.log("people_waste Function At Ecommerce")
+      }
+   })();
+});
+
+useEffect(() => {
+  (async()=>{
+    try{
+      
+      while(true){
+        const random= Math.floor(Math.random() * 1000);
+        if(random >50 && random < 350){
+          array[1].amount=random;
+                    break;
+        }
+      }
+      // console.log("Meter Bill ==== "+  array[1].amount);
+     
+      }
+      catch(e){
+        console.log("meter_reading Function At Ecommerce")
+      }
+   })();
+},[]);
+
+useEffect(() => {
+  (async()=>{
+    try{
+    const provider = new ethers.BrowserProvider(window.ethereum);
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+        const _people_deducted_amount = await contract.people_deducted_amount();
+        const data2=JSON.parse(
+          JSON.stringify(_people_deducted_amount, (key, value) => {
+            return typeof value === "bigint" ? value.toString() : value;
+          })
+        );
+        array[2].amount=data2;
+        // console.log("people_deducted_amount = "+array[2].amount);
+      }
+      catch(e){
+        console.log("people_deducted_amount Function At Ecommerce")
+      }
+   })();
+});
+
+useEffect(() => {
+  setTimeout(() => {
+    setCount((count) => count + 1);
+  }, 1000);
+});
+
+
+// console.log(`ajdiwdiadn == ${contract_address.smartContractAddress}`)
+ /////////////////////////////////////////////////////////////////////////
+
+
+ /////////////////////////////////////////////////////////////////////////
+ const [num1, setNum1] = useState();
+ const [num2, setNum2] = useState();
+
+ const array2=[
+  {
+    icon: <BsCurrencyRupee />,
+    amount: num1,
+    title: " Electricity bill",
+    desc: "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+    pcColor: "n1",
+    id:1,
+  },
+  {
+    icon: <BsCurrencyRupee />,
+    amount: num2,
+    title: " Water bill",
+    desc: "0x617F2E2fD72FD9D5503197092aC168c91465E7f2",
+    iconColor: "#03C9D7",
+    iconBg: "#E5FAFB",
+    pcColor: "n2",
+    id:2,
+  }
+]
+
+  const handleInput = (event) => {
+    const name = event.target.name;
+    console.log(event.target.value);
+    const value = event.target.value;
+    console.log(name, value);
+    if (name=="n1")
+      setNum1(value);
+    
+    if (name=="n2")
+    setNum2(value)
+    // console.log(compDetails.name);
+    // console.log(compDetails.category);
+  };
+
+
+//  useEffect(() => {
+  const people_spend=async(p)=>{
+    try{
+    
+        if(p==1){
+          console.log(p);
+          console.log(num1);
+          const provider = new ethers.BrowserProvider(window.ethereum);
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, signer);
+          const transaction = await contract.people_spend("0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2",num1);
+          transaction.wait();
+          setNum1(0);
+        }
+       
+        if(p==2){
+          const provider = new ethers.BrowserProvider(window.ethereum);
+    await window.ethereum.request({ method: "eth_requestAccounts" });
+    const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, signer);
+          const transaction = await contract.people_spend("0x617F2E2fD72FD9D5503197092aC168c91465E7f2",num2);
+          transaction.wait();
+          setNum2(0);
+
+        }
+      }
+      catch(e){
+        console.log("people_spend Function At Ecommerce")
+      }
+   }
+// },[]);
+
+  /////////////////////////////////////////////////////////////////////////
   return (
     <>
       <div className="flex justify-between mb-2 shadow-md  items-center  mx-4">
@@ -64,8 +280,8 @@ const Ecommerce = () => {
           <div className="bg-white shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg h-[200px] rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center">
             <div className="flex justify-between items-center">
               <div>
-                <p className="font-bold text-gray-400">Coins</p>
-                <p className="text-2xl">3,448.78</p>
+                <p className="font-bold text-gray-400">ElectroCoin</p>
+                <p className="text-2xl">{total_amount}</p>
               </div>
               <button
                 type="button"
@@ -77,7 +293,7 @@ const Ecommerce = () => {
             </div>
           </div>
           <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
-            {earningData.map((item) => (
+            {array.map((item) => (
               <div
                 key={item.title}
                 className="bg-white h-[200px] shadow-lg dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56  p-4 pt-9 rounded-2xl "
@@ -94,9 +310,9 @@ const Ecommerce = () => {
                 </button>
                 <p className="mt-3">
                   <span className="text-lg font-semibold">{item.amount}</span>
-                  <span className={`text-sm text-${item.pcColor} ml-2`}>
+                  {/* <span className={`text-sm text-${item.pcColor} ml-2`}>
                     {item.percentage}
-                  </span>
+                  </span> */}
                 </p>
                 <p className="text-sm text-gray-400  mt-1">{item.title}</p>
               </div>
@@ -111,8 +327,8 @@ const Ecommerce = () => {
               <DropDown currentMode={currentMode} />
             </div>
             <div className="mt-10 w-72 md:w-400">
-              {recentTransactions.map((item) => (
-                <div key={item.title} className="flex justify-between mt-4">
+              {array2.map((item) => (
+                <div key={item.title} className="flex justify-between mt-4 gap-36">
                   <div className="flex gap-4">
                     <button
                       type="button"
@@ -126,10 +342,23 @@ const Ecommerce = () => {
                     </button>
                     <div>
                       <p className="text-md font-semibold">{item.title}</p>
-                      <p className="text-sm text-gray-400">{item.desc}</p>
+                      <p className="w-44 text-sm text-gray-400 break-words">{item.desc}</p>
                     </div>
                   </div>
-                  <p className={`text-${item.pcColor}`}>{item.amount}</p>
+                  {/* <p className={`text-${item.pcColor}`}>{item.amount}</p> */}
+                  <div className='h-8 flex flex-row gap-4'>
+                    {/* <input placeholder='Enter' className='w-24 bg-orange-400'></input> */}
+                    <input
+                type="number"
+                autoComplete="off"
+                value={item.amount}
+                onChange={handleInput}
+                name={item.pcColor}
+                id={item.pcColor}
+                placeholder="Coin"
+                className='w-24 bg-orange-400'></input>
+                    <button onClick={()=>people_spend(item.id)}>Send</button>
+                  </div>
                 </div>
               ))}
             </div>
@@ -180,7 +409,7 @@ const Ecommerce = () => {
         <div className="flex flex-wrap justify-center">
           <div className="md:w-800 shadow-lg bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
             <div>
-              <Chatbot />
+              <ChatBot />
             </div>
           </div>
         </div>

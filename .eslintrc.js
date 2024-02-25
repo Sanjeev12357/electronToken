@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* eslint-disable */
 module.exports = {
   env: {
@@ -52,3 +53,5 @@ module.exports = {
     ],
   },
 };
+=======
+>>>>>>> 1be281a30f1c0c755f5b05232acf89e9b3388cbb
