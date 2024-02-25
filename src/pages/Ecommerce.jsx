@@ -237,6 +237,54 @@ useEffect(() => {
 // },[]);
 
   /////////////////////////////////////////////////////////////////////////
+const [array33,setArray33]=useState();
+const [result,setResult]=useState([]);
+
+
+  useEffect(() => {
+    (async()=>{
+      try{
+      const provider = new ethers.BrowserProvider(window.ethereum);
+          const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+          const _fetching_log_int = await contract.fetching_log_int();
+          setArray33(_fetching_log_int);
+          console.log("people_deducted_amount = "+_fetching_log_int);
+        }
+        catch(e){
+          console.log("people_deducted_amount Function At Ecommerce")
+        }
+     })();
+  });
+
+
+array33.map((val)=>{
+  (async(p)=>{
+    try{
+    
+       
+          
+          const provider = new ethers.BrowserProvider(window.ethereum);
+    // await window.ethereum.request({ method: "eth_requestAccounts" });
+    // const signer = await provider.getSigner();
+        const contract = new ethers.Contract(contract_address.smartContractAddress, electron.abi, provider);
+          const transaction = await contract.fetching_log_data(p);
+          
+          transaction.wait();
+          console.log("adwdkawndkaw = "+transaction);
+          setResult([...transaction,{transaction}]);
+          console.log(result);
+      
+      }
+      catch(e){
+        console.log("people_spend Function At Ecommerce")
+      }
+   })(val);
+
+})
+
+  
+  
+  /////////////////////////////////////////////////////////////////////////
   return (
     <>
       <div className="flex justify-between items-center  mx-4">
@@ -351,8 +399,8 @@ useEffect(() => {
                 name={item.pcColor}
                 id={item.pcColor}
                 placeholder="Coin"
-                className='w-24 bg-orange-400'></input>
-                    <button onClick={()=>people_spend(item.id)}>Send</button>
+                className='w-24 bg-slate-200 rounded-lg'></input>
+                    <button onClick={()=>people_spend(item.id)} className='w-12 bg-slate-500 rounded-lg'>Send</button>
                   </div>
                 </div>
               ))}
@@ -376,26 +424,28 @@ useEffect(() => {
               style={{ backgroundColor: currentColor }}
             >
               <div className="flex justify-between items-center ">
-                <p className="font-semibold text-white text-2xl">Earnings</p>
+                <p className="font-semibold text-white text-2xl">Log</p>
 
                 <div>
                   <p className="text-2xl text-white font-semibold mt-8">
-                    Rs3,448.78
+                    User Log
                   </p>
-                  <p className="text-gray-200">Monthly revenue</p>
+                  <p className="text-gray-200">Daily Log</p>
                 </div>
               </div>
 
-              <div className="mt-[300px]">
-                <SparkLine
-                  currentColor={currentColor}
-                  id="column-sparkLine"
-                  height="100px"
-                  type="Column"
-                  data={SparklineAreaData}
-                  width="320"
-                  color="rgb(242, 252, 253)"
-                />
+              <div className="bg-orange-400">
+               {result.map((val)=>{
+    return(
+      <div>
+            <p>{val.from}</p><br/>
+            <p>{val.to}</p><br/>
+            <p>{val.value}</p>
+            <hr></hr>   
+      </div>
+    );
+  })
+  }
               </div>
             </div>
           </div>
