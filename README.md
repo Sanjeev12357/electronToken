@@ -12,10 +12,12 @@
 - [Index](#index)
 - [🚀 Introduction](#-introduction)
   - [Techstack](#techstack)
-  - [Features](#features)
+  - [✨ Features](#-features)
 - [How to setup](#how-to-setup)
   - [Clone the repo](#clone-the-repo)
   - [Install dependencies](#install-dependencies)
+  - [.env file creation](#env-file-creation)
+  - [Deploying the smart contract](#deploying-the-smart-contract)
 - [Finally run the webapp](#finally-run-the-webapp)
 - [📝 License](#-license)
 
@@ -24,8 +26,16 @@
 The Waste-to-Energy Platform is a decentralized solution designed to revolutionize how we manage organic waste and harness renewable energy. By connecting households and businesses with local waste-to-energy conversion facilities, our platform incentivizes eco-friendly waste disposal while promoting the generation of clean energy. ♻️
 
 ## Techstack
-
+     
+    - Polygon zkEVM Used
     - ReactJS
+    - Solidity
+    - Hardhat
+    - Ether.js
+    - TailwindCSS
+    - Javascript
+    - Gemini
+    - Tinkercad
 
 ## ✨ Features
 
@@ -52,9 +62,37 @@ cd electronToken
 npm install
 ```
 
+## .env file creation
+ - Create the .env file in contract folder
+```bash
+cd contract
+touch .env
+```
+copy this code and paste it in your .env file
+``` bash
+INFURA_API_KEY="------Enter Your Infura API Key--------"
+PRIVATE_KEY="------Enter Your Private Key of metamask wallet--------"
+```
+If you don't have INFURA API KEY then [click here](https://app.infura.io/) and copy your api key
+
+## Deploying the smart contract
+
+ - Install this dependecy
+  ```bash
+  cd ..
+  npm install @nomicfoundation/hardhat-toolbox
+  ```
+
+  - Run this command to deploy the smart contract
+  ``` bash
+  cd contract
+  npx hardhat run scripts/deploy.js --network zkEVM
+```
+
 # Finally run the webapp
 
 ```bash
+cd ..
 npm start
 ```
 

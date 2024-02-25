@@ -52,7 +52,7 @@ const array=[{
   pcColor: "green-600",
   },{
   icon: <FiBarChart />,
-  amount: "87",
+  amount: "0",
   percentage: "+23%",
   title: "Meter Bill (Monthly)",
   iconColor: "rgb(228, 106, 118)",
@@ -119,15 +119,16 @@ console.log("people_waste Function At Ecommerce")
 useEffect(() => {
   (async()=>{
     try{
-      
-      while(true){
-        const random= Math.floor(Math.random() * 1000);
-        if(random >50 && random < 350){
-          array[1].amount=random;
-                    break;
-        }
-      }
-      // console.log("Meter Bill ==== "+  array[1].amount);
+      array[1].amount=0;
+
+      // while(true){
+      //   const random= Math.floor(Math.random() * 1000);
+      //   if(random >50 && random < 350){
+      //     array[1].amount=random;
+      //               break;
+      //   }
+      // }
+      // // console.log("Meter Bill ==== "+  array[1].amount);
      
       }
       catch(e){
