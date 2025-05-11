@@ -1,4 +1,5 @@
 # <h1 align="center">🌱 Waste-to-Energy Platform 🌞</h1>
+Blockchain
 
 <p align="center">
   <img src="https://www.clearias.com/up/waste-to-energy.png" alt="Waste-to-Energy Platform" width="300">
